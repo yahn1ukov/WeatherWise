@@ -1,0 +1,4 @@
+<resources>
+
+    <style name="Theme.WeatherWise" parent="Theme.Material3.Light" />
+</resources>
