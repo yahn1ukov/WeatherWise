@@ -12,10 +12,11 @@ import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.LocationServices
 import com.ua.weatherwise.utils.Constants.Companion.PERMISSION_ID
 import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Singleton
+import dagger.hilt.android.scopes.ActivityScoped
+import javax.inject.Inject
 
-@Singleton
-class LocationHelper(
+@ActivityScoped
+class LocationHelper @Inject constructor(
     @ApplicationContext private val context: Context
 ) {
     @SuppressLint("MissingPermission")

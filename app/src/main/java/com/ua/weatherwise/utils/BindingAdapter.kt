@@ -3,10 +3,10 @@ package com.ua.weatherwise.utils
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import coil.load
 import com.ua.weatherwise.R
-import com.ua.weatherwise.domain.models.NetworkResult
 import com.ua.weatherwise.utils.Constants.Companion.ICON_URL
 
 class BindingAdapter {
@@ -21,12 +21,14 @@ class BindingAdapter {
 
         @BindingAdapter("android:showImageTextError")
         @JvmStatic
-        fun showImageTextError(view: View, error: NetworkResult.Error<*>) {
-            when (view) {
-                is ImageView -> view.visibility = View.VISIBLE
-                is TextView -> {
-                    view.visibility = View.VISIBLE
-                    view.text = error.message.toString()
+        fun showImageTextError(view: View, error: NetworkResult<*>?) {
+            if (error is NetworkResult.Error) {
+                when (view) {
+                    is ImageView -> view.isVisible = true
+                    is TextView -> {
+                        view.isVisible = true
+                        view.text = error.message.toString()
+                    }
                 }
             }
         }

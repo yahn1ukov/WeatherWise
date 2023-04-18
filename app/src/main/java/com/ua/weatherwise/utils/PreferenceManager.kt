@@ -11,14 +11,15 @@ import com.ua.weatherwise.utils.Constants.Companion.DEFAULT_UNITS
 import com.ua.weatherwise.utils.Constants.Companion.PREFERENCE_COORDINATES
 import com.ua.weatherwise.utils.Constants.Companion.PREFERENCE_UNITS
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import java.io.IOException
-import javax.inject.Singleton
+import javax.inject.Inject
 
-@Singleton
-class PreferenceManager(
+@ViewModelScoped
+class PreferenceManager @Inject constructor(
     @ApplicationContext context: Context
 ) {
     private val dataStore = context.createDataStore(name = DATA_STORE)

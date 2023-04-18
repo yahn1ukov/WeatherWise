@@ -14,7 +14,8 @@ class SettingsViewModel @Inject constructor(
     private val preferenceManager: PreferenceManager
 ) : ViewModel() {
     val getUnits = preferenceManager.getUnits.asLiveData(Dispatchers.IO)
-
+    val getCoordinates = preferenceManager.getCoordinates.asLiveData(Dispatchers.IO)
+    
     fun setUnits(units: String) {
         viewModelScope.launch {
             preferenceManager.setUnits(units)

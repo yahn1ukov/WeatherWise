@@ -8,8 +8,12 @@ import retrofit2.http.QueryMap
 
 interface WeatherApi {
     @GET(ENDPOINT_WEATHER)
-    suspend fun getByCoordinates(@QueryMap queries: Map<String, String>): Response<Weather>
+    suspend fun getByCoordinates(
+        @QueryMap queries: Map<String, String>
+    ): Response<Weather>
 
     @GET(ENDPOINT_WEATHER)
-    suspend fun searchByCity(@QueryMap queries: Map<String, String>): Response<Weather>
+    suspend fun searchByCity(
+        @QueryMap queries: Map<String, String>
+    ): Response<Weather>
 }

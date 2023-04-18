@@ -3,6 +3,7 @@ package com.ua.weatherwise.presentation
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -23,8 +24,7 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var locationHelper: LocationHelper
 
-    @Inject
-    lateinit var mainViewModel: MainViewModel
+    private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

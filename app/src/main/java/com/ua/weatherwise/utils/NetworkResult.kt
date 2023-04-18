@@ -1,4 +1,4 @@
-package com.ua.weatherwise.domain.models
+package com.ua.weatherwise.utils
 
 import retrofit2.Response
 
