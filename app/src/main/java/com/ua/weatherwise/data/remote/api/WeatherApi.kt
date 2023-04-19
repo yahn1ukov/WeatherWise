@@ -11,9 +11,4 @@ interface WeatherApi {
     suspend fun getByCoordinates(
         @QueryMap queries: Map<String, String>
     ): Response<Weather>
-
-    @GET(ENDPOINT_WEATHER)
-    suspend fun searchByCity(
-        @QueryMap queries: Map<String, String>
-    ): Response<Weather>
 }

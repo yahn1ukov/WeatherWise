@@ -1,46 +1,55 @@
 package com.ua.weatherwise.utils
 
-import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import coil.load
 import com.ua.weatherwise.R
 import com.ua.weatherwise.utils.Constants.Companion.ICON_URL
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class BindingAdapter {
     companion object {
-        @BindingAdapter("android:imageLoad")
+        @BindingAdapter("android:loadImage")
         @JvmStatic
-        fun imageLoad(imageView: ImageView, iconId: String) {
-            imageView.load("$ICON_URL/$iconId.png") {
+        fun loadImage(imageView: ImageView, iconId: String?) {
+            imageView.load("$ICON_URL/$iconId@2x.png") {
                 error(R.drawable.ic_no_image)
             }
         }
 
-        @BindingAdapter("android:showImageTextError")
+        @BindingAdapter("android:convertToTemperature")
         @JvmStatic
-        fun showImageTextError(view: View, error: NetworkResult<*>?) {
-            if (error is NetworkResult.Error) {
-                when (view) {
-                    is ImageView -> view.isVisible = true
-                    is TextView -> {
-                        view.isVisible = true
-                        view.text = error.message.toString()
-                    }
-                }
-            }
+        fun convertToTemperature(textView: TextView, number: Double) {
+            textView.text = "${number.toInt()}°"
         }
 
-        @BindingAdapter("android:showTemperatureScale")
+        @BindingAdapter("android:convertToPercentages")
         @JvmStatic
-        fun showTemperatureScale(view: TextView, units: String) {
-            if (units == "Metric") {
-                view.text = "°C"
-            } else {
-                view.text = "°F"
-            }
+        fun convertToPercentages(textView: TextView, number: Double) {
+            textView.text = "${number.toInt()}%"
+        }
+
+        @BindingAdapter("android:convertToPercentages")
+        @JvmStatic
+        fun convertToPercentages(textView: TextView, number: Int) {
+            textView.text = "${number}%"
+        }
+
+        @BindingAdapter("android:convertToSpeed")
+        @JvmStatic
+        fun convertToSpeed(textView: TextView, number: Double) {
+            textView.text = "${number.toInt()}km/h"
+        }
+
+        @BindingAdapter("android:convertToDate")
+        @JvmStatic
+        fun convertToDate(textView: TextView, number: Int) {
+            val date = Date(number.toLong())
+            val format = SimpleDateFormat("HH:mm", Locale.getDefault())
+            textView.text = format.format(date)
         }
     }
 }

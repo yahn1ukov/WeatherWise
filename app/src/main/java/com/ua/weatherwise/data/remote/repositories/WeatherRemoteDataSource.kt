@@ -11,8 +11,4 @@ class WeatherRemoteDataSource @Inject constructor(
     suspend fun getByCoordinates(queries: Map<String, String>): Response<Weather> {
         return weatherApi.getByCoordinates(queries)
     }
-
-    suspend fun searchByCity(queries: Map<String, String>): Response<Weather> {
-        return weatherApi.searchByCity(queries)
-    }
 }
