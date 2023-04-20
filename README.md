@@ -23,6 +23,9 @@ Clean Architecture with MVVM Pattern
 
 ### Functionality
 
+- Weather:
+  - Get (either by default location or by last know location)
+
 ### Screenshots
 
 ![app](./screenshots/app.png)
