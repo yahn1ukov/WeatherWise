@@ -15,7 +15,6 @@ Clean Architecture with MVVM Pattern
 - Kotlin (with Coroutines)
 - Retrofit
 - OkHttp
-- Navigation
 - Dagger-Hilt
 - LiveData
 - Coil
@@ -25,3 +24,5 @@ Clean Architecture with MVVM Pattern
 ### Functionality
 
 ### Screenshots
+
+![app](./screenshots/app.png)
