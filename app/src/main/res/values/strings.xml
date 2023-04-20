@@ -2,4 +2,14 @@
     <string name="app_name">WeatherWise</string>
 
     <string name="feels_like">Feels like</string>
+
+    <string name="weather_icon_content_description">Icon</string>
+    <string name="location_content_description">Location</string>
+    <string name="max_temperature_content_description">Max Temperature</string>
+    <string name="min_temperature_content_description">Min Temperature</string>
+    <string name="clouds_content_description">Clouds</string>
+    <string name="humidity_content_description">Humidity</string>
+    <string name="wind_content_description">Wind</string>
+    <string name="sunrise_content_description">Sunrise</string>
+    <string name="sunset_content_description">Sunset</string>
 </resources>

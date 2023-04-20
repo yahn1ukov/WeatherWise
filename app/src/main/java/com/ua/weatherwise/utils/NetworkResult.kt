@@ -11,8 +11,9 @@ sealed class NetworkResult<T>(val data: T? = null, val message: String? = null) 
         fun <T> toNetworkResult(response: Response<T>): NetworkResult<T> {
             return when {
                 response.message().toString().contains("timeout") -> Error("Timeout")
+                response.code() == 401 -> Error("Invalid API Key")
                 response.code() == 402 -> Error("API Key Limited")
-                response.body()!! == null -> Error("City not found")
+                response.body() == null -> Error("City not found")
                 response.isSuccessful -> Success(response.body()!!)
                 else -> Error(response.message().toString())
             }

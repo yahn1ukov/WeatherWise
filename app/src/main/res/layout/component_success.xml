@@ -29,6 +29,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/weather_icon_content_description"
                 android:loadImage="@{weather.weather[0].icon}" />
         </com.google.android.material.card.MaterialCardView>
 
@@ -76,6 +77,7 @@
                     android:id="@+id/image_city"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
+                    android:contentDescription="@string/location_content_description"
                     app:layout_constraintBottom_toBottomOf="@+id/text_city"
                     app:layout_constraintStart_toEndOf="@+id/text_city"
                     app:layout_constraintTop_toTopOf="@+id/text_city"
@@ -86,6 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:contentDescription="@string/max_temperature_content_description"
                     app:layout_constraintBottom_toTopOf="@+id/text_feels"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_city"
@@ -106,6 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:contentDescription="@string/min_temperature_content_description"
                     app:layout_constraintBottom_toBottomOf="@+id/text_max_temperature"
                     app:layout_constraintStart_toEndOf="@+id/text_max_temperature"
                     app:layout_constraintTop_toTopOf="@+id/text_max_temperature"
@@ -133,7 +137,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/image_max_temperature" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/materialTextView4"
+                    android:id="@+id/text_feels_like"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
@@ -151,11 +155,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
             android:elevation="0dp"
-            app:cardBackgroundColor="?attr/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/card_icon_weather"
-            app:strokeWidth="0dp">
+            app:strokeColor="?attr/colorPrimary"
+            app:strokeWidth="3dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -166,16 +170,17 @@
                     android:id="@+id/image_clouds"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
+                    android:contentDescription="@string/clouds_content_description"
                     app:layout_constraintEnd_toStartOf="@+id/image_humidity"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_cloud" />
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/text_clouds"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:convertToPercentages="@{weather.clouds.all}"
-                    android:textColor="@android:color/white"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/image_clouds"
@@ -186,16 +191,17 @@
                     android:id="@+id/image_humidity"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView"
+                    android:contentDescription="@string/humidity_content_description"
+                    app:layout_constraintEnd_toStartOf="@+id/image_wind"
                     app:layout_constraintStart_toEndOf="@+id/image_clouds"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_drop" />
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/text_humidity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:convertToPercentages="@{weather.main.humidity}"
-                    android:textColor="@android:color/white"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/image_humidity"
@@ -203,37 +209,39 @@
                     app:layout_constraintTop_toBottomOf="@+id/image_humidity" />
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/image_wind"
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
+                    android:contentDescription="@string/wind_content_description"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/image_humidity"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_wind" />
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/text_wind"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:convertToSpeed="@{weather.wind.speed}"
-                    android:textColor="@android:color/white"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView"
-                    app:layout_constraintStart_toStartOf="@+id/imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                    app:layout_constraintEnd_toEndOf="@+id/image_wind"
+                    app:layout_constraintStart_toStartOf="@+id/image_wind"
+                    app:layout_constraintTop_toBottomOf="@+id/image_wind" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
             android:elevation="0dp"
-            app:cardBackgroundColor="?attr/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/card_additional_information"
-            app:strokeWidth="0dp">
+            app:strokeColor="?attr/colorPrimary"
+            app:strokeWidth="3dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -244,16 +252,17 @@
                     android:id="@+id/image_sunrise"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
+                    android:contentDescription="@string/sunrise_content_description"
                     app:layout_constraintEnd_toStartOf="@+id/image_sunset"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_sun" />
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/text_sunrise"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:convertToDate="@{weather.sys.sunrise}"
-                    android:textColor="@android:color/white"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/image_sunrise"
@@ -264,16 +273,17 @@
                     android:id="@+id/image_sunset"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
+                    android:contentDescription="@string/sunset_content_description"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/image_sunrise"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_moon" />
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/text_sunset"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:convertToDate="@{weather.sys.sunset}"
-                    android:textColor="@android:color/white"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/image_sunset"
