@@ -21,11 +21,6 @@ Clean Architecture with MVVM Pattern
 - DataStore
 - DataBinding
 
-### Functionality
-
-- Weather:
-  - Get (either by default location or by last know location)
-
 ### Screenshots
 
 ![app](./screenshots/app.png)
